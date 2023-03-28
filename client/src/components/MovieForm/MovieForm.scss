@@ -1,0 +1,66 @@
+@import "../../styles/colors.scss";
+
+.movie-form-container {
+    background-color:  $backgroundLight;
+    width: 40%;
+    min-height: 30%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 40px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    input {
+        color: $secondary;
+    }
+}
+
+.label {
+    color: $primary;
+    text-align: left;
+    font-size: 18px;
+}
+
+.heading-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 30px;
+
+}
+
+.movie-form-heading {
+    color: $primary;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+}
+
+
+.close-button {
+    background-color: $backgroundLight;
+    font-weight: 700;
+    font-size: 20px;
+    color: $primary;
+    position: absolute;
+    right: 0;
+    padding: 0;
+}
+
+.submit-button {
+    width: 100%;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: $primary;
+    color: $offwhite;
+}

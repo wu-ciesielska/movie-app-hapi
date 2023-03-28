@@ -1,0 +1,38 @@
+@import "../../styles/colors.scss";
+
+.movie-row {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.title {
+    width: 60%;
+}
+
+.rating {
+    width: 20%;
+}
+
+.delete-button {
+    background-color: $accent;
+}
+
+.edit-button {
+    background-color: $brown;
+}
+
+.delete-button, .edit-button {
+    width: 10%;
+    color: $offwhite;
+    font-weight: 600
+}
+
+.title, .rating {
+    padding: 10px;
+    border-radius: 4px;
+    background-color: $background;
+    color: $secondary;
+}
