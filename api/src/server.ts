@@ -1,3 +1,4 @@
+import Joi from "joi";
 import { movieRoutes } from "./routes/movie-router";
 import * as Hapi from "@hapi/hapi";
 import { Plugin, Server } from "@hapi/hapi";
@@ -19,6 +20,7 @@ export const init = async function (): Promise<Server> {
   });
 
   server.realm.modifiers.route.prefix = "/api";
+  server.validator(Joi);
 
   const swaggerOptions = {
     info: {

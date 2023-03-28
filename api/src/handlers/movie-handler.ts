@@ -1,17 +1,28 @@
 import { Request, ResponseObject, ResponseToolkit } from "@hapi/hapi";
 import prisma from "../db";
 
-// const addMovie = async (req, res, next) => {
-//   try {
-//     const movie = await prisma.movie.create({
-//       data: { title: req.body.title, rating: req.body.rating },
-//     });
+interface MovieInput {
+  title: string;
+  rating: number;
+}
 
-//     res.json({ data: movie });
-//   } catch (e) {
-//     // next(e);
-//   }
-// };
+const addMovie = async (
+  req: Request,
+  res: ResponseToolkit
+): Promise<ResponseObject> => {
+  const payload = req.payload as MovieInput;
+
+  try {
+    const movie = await prisma.movie.create({
+      data: { title: payload.title, rating: payload.rating },
+    });
+
+    const response = res.response({ data: movie });
+    return response;
+  } catch (e) {
+    console.log(e);
+  }
+};
 
 const getMovies = async (
   _req: Request,
@@ -53,7 +64,7 @@ const getMovies = async (
 // };
 
 export {
-  // addMovie,
+  addMovie,
   getMovies,
   // updateMovie, deleteMovie
 };
