@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/index.ts",
+  "proxy": "http://localhost:4000",
   "scripts": {
     "dev:tsc": "tsc --watch -p .",
     "dev:serve": "nodemon -e js -w src src/index.ts",

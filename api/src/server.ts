@@ -11,7 +11,14 @@ export const init = async function (): Promise<Server> {
   server = Hapi.server({
     port: process.env.PORT || 4000,
     host: "0.0.0.0",
+    routes: {
+      cors: {
+        origin: ["http://localhost:3000"], // an array of origins or 'ignore'
+      },
+    },
   });
+
+  server.realm.modifiers.route.prefix = "/api";
 
   const swaggerOptions = {
     info: {
