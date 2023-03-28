@@ -1,6 +1,11 @@
 import { ServerRoute } from "@hapi/hapi";
 import Joi from "joi";
-import { addMovie, deleteMovie, getMovies } from "../handlers/movie-handler";
+import {
+  addMovie,
+  deleteMovie,
+  getMovies,
+  updateMovie,
+} from "../handlers/movie-handler";
 
 export const movieRoutes: ServerRoute[] = [
   {
@@ -26,6 +31,22 @@ export const movieRoutes: ServerRoute[] = [
       handler: getMovies,
       description: "Get movies",
       notes: "Returns all movies stored in database",
+      tags: ["api"],
+    },
+  },
+  {
+    method: "PUT",
+    path: "/movies/{id}",
+    options: {
+      handler: updateMovie,
+      validate: {
+        payload: {
+          title: Joi.string(),
+          rating: Joi.number().min(0).max(5),
+        },
+      },
+      description: "Update movie",
+      notes: "Updates a movie with given id",
       tags: ["api"],
     },
   },
