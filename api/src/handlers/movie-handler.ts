@@ -57,14 +57,19 @@ const getMovies = async (
 //   res.json({ data: updated });
 // };
 
-// const deleteMovie = async (req, res) => {
-//   const deleted = await prisma.movie.delete({ where: { id: req.params.id } });
-//   console.log(deleted);
-//   res.json({ data: deleted });
-// };
+const deleteMovie = async (
+  req: Request,
+  res: ResponseToolkit
+): Promise<ResponseObject> => {
+  const deleted = await prisma.movie.delete({ where: { id: req.params.id } });
+
+  const response = res.response({ data: deleted });
+  return response;
+};
 
 export {
   addMovie,
   getMovies,
-  // updateMovie, deleteMovie
+  // updateMovie,
+  deleteMovie,
 };

@@ -1,6 +1,6 @@
 import { ServerRoute } from "@hapi/hapi";
 import Joi from "joi";
-import { addMovie, getMovies } from "../handlers/movie-handler";
+import { addMovie, deleteMovie, getMovies } from "../handlers/movie-handler";
 
 export const movieRoutes: ServerRoute[] = [
   {
@@ -26,6 +26,16 @@ export const movieRoutes: ServerRoute[] = [
       handler: getMovies,
       description: "Get movies",
       notes: "Returns all movies stored in database",
+      tags: ["api"],
+    },
+  },
+  {
+    method: "DELETE",
+    path: "/movies/{id}",
+    options: {
+      handler: deleteMovie,
+      description: "Delete movie",
+      notes: "Removes a movie with given id from database",
       tags: ["api"],
     },
   },
