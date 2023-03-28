@@ -1,8 +1,9 @@
 import { movieRoutes } from "./routes/movie-router";
-("use strict");
-
-import Hapi from "@hapi/hapi";
-import { Request, Server } from "@hapi/hapi";
+import * as Hapi from "@hapi/hapi";
+import { Plugin, Server } from "@hapi/hapi";
+import Inert from "@hapi/inert";
+import Vision from "@hapi/vision";
+import HapiSwagger from "hapi-swagger";
 
 export let server: Server;
 
@@ -11,6 +12,31 @@ export const init = async function (): Promise<Server> {
     port: process.env.PORT || 4000,
     host: "0.0.0.0",
   });
+
+  const swaggerOptions = {
+    info: {
+      title: "Test API Documentation",
+      version: "1.0.0",
+    },
+  };
+
+  const plugins: Array<Hapi.ServerRegisterPluginObject<any>> = [
+    {
+      // @ts-ignore
+      plugin: Inert,
+    },
+    {
+      // @ts-ignore
+      plugin: Vision,
+    },
+    {
+      // @ts-ignore
+      plugin: HapiSwagger,
+      options: swaggerOptions,
+    },
+  ];
+
+  await server.register(plugins);
 
   server.route(movieRoutes);
 

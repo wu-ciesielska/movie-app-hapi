@@ -5,6 +5,11 @@ export const movieRoutes: ServerRoute[] = [
   {
     method: "GET",
     path: "/movies",
-    handler: getMovies,
+    options: {
+      handler: getMovies,
+      description: "Get movies",
+      notes: "Returns all movies stored in database",
+      tags: ["api"],
+    },
   },
 ];
